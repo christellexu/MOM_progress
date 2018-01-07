@@ -1,11 +1,6 @@
----
-title: "Median of Means for an AR(1) | Christelle Xu"
-output:
-  pdf_document: default
-  html_notebook: default
----
+# "Median of Means for an AR(1) | Christelle Xu"
 
-#Summary
+## Summary
 
 This is an illustration of my current progress of the Median of Means (MOM) algorithm implemented for an AR(1). At this point in time, the algorithm does not work correctly though any issues will be resolved by graduation. The purpose of this document is to present the algorithm, the progress made, and the problems to be solved.
 
@@ -27,7 +22,7 @@ Our optimization function in which we aim to minimize our loss to find an optima
 
 
 
-#Implementation
+## Implementation
 
 Shuffling data is important because it forces different combinations of data to be part of a chosen block. This allows us to better evaluate the performance of various block sizes in a way that doesn't depend on the combination of data that happens to be in a block at a given time.
 
