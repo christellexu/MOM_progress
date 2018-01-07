@@ -1,4 +1,4 @@
-# "Median of Means for an AR(1) | Christelle Xu"
+# Median of Means for an AR(1) | Christelle Xu
 
 ## Summary
 
@@ -6,13 +6,13 @@ This is an illustration of my current progress of the Median of Means (MOM) algo
 
 Median of Means (MOM) is a robust alternative to the Empirical Risk Minimization algorithm (ERM), that aims to tackle computational complexity and is a way to design and analyze efficient, parallel, and robust algorithms for learning. The ERM in and of itself has benefited from regularization given its propensity to overfit, but has also been found to suffer in terms of performance upon deviating from iid subgaussian setups such as when the data is heavy-tailed. 
 
-The MOM algorithm is one important solution to this issue particularly in its capacity to handle large amounts of data. Its primary advantage over well known robust algorithms such as the Huber function, is in its speed, which when dealing with large quantities of data is paramount. It does so by paralizing the data in way that creates subproblems. The gradient descent, the most computationally heavy portion of learning, can then be applied on smaller but representative data that solves the general problem.
+The MOM algorithm is one important solution to this issue particularly in its capacity to handle large amounts of data. Its primary advantage over well known robust algorithms such as the Huber function, is in its speed, which when dealing with large quantities of data is paramount. It does so by parallelizing the data in way that creates subproblems. The gradient descent, the most computationally heavy portion of learning, can then be applied on smaller but representative data that solves the general problem.
 
 When applied to iid data, the MOM algorithm partitions the data into $k$ equal sized groups or blocks then returns the median of the sample means of each of the $k$ groups. However in this case, we're working with dependent data which presents its own issues.
 
 The primary way in which we circumvented the issue of dependency in an AR(1) is by relying on the fact that the error terms are iid. This allows us to shuffle our data like we do in the iid case.
 
-In general, we begin by taking our AR(1) of size $n$ and calculate our epsilons which will be iid and gaussian, based on our setup. We will then divide the values into $k$ blocks, which will be chosen in a way that optimizes our function, upon which we will take the mean of the epsilons within each block. We then take the median of the means of the blocks. The time series snippet which belongs to the errors which belong to the block, $B_{k_{med}}$ will be used to find our optimal $\hat{\theta}$ using gradient descent.
+In general, we begin by taking our AR(1) of size $n$ and calculate our epsilons which are iid and gaussian, based on our setup. We then divide the values into $k$ blocks, which are chosen in a way that optimizes our function, upon which take the mean of the epsilons within each block. We then take the median of the means of the blocks. The time series snippet which belongs to the errors which belong to the block, $B_{k_{med}}$ will be used to find our optimal $\hat{\theta}$ using gradient descent.
 
 Our optimization function in which we aim to minimize our loss to find an optimal theta is:
 
